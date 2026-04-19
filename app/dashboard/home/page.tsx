@@ -102,36 +102,37 @@ export default function DashboardHome() {
     <div className="min-h-screen" style={{ background: "var(--bg-secondary)" }}>
       {/* TOP NAV */}
       <div className="bg-white sticky top-0 z-30" style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.04)", borderBottom: "1px solid var(--border-light)" }}>
-        <div className="max-w-[1600px] mx-auto px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg" style={{ background: "var(--cue-green)" }}>C</div>
-            <div>
-              <h1 className="font-[800] text-[var(--text-primary)] tracking-tight text-[18px]">Cuemath Hiring Dashboard</h1>
-              <p className="text-[12px] text-[var(--text-muted)] font-medium uppercase tracking-wider">Tutor Evaluation Portal</p>
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 py-3 sm:py-4 flex flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shrink-0" style={{ background: "var(--cue-green)" }}>C</div>
+            <div className="min-w-0">
+              <h1 className="font-[800] text-[var(--text-primary)] tracking-tight text-[15px] sm:text-[18px] truncate">Hiring Dashboard</h1>
+              <p className="hidden xs:block text-[10px] sm:text-[11px] text-[var(--text-muted)] font-medium uppercase tracking-wider truncate">Tutor Evaluation</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Rescore Missing Scores button */}
             {stats.pendingScore > 0 && (
               <button
                 onClick={handleRescore}
                 disabled={rescoring}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-[700] text-white transition-all hover:-translate-y-[1px] disabled:opacity-70"
+                className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-[13px] font-[700] text-white transition-all hover:-translate-y-[1px] disabled:opacity-70"
                 style={{ background: "var(--gradient-orange)", boxShadow: "0 4px 16px rgba(225,112,85,0.3)" }}
               >
-                <Zap className={`w-4 h-4 ${rescoring ? "animate-pulse" : ""}`} />
-                {rescoring ? "Scoring…" : `Score ${stats.pendingScore} Missing`}
+                <Zap className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${rescoring ? "animate-pulse" : ""}`} />
+                <span className="hidden sm:inline">{rescoring ? "Scoring…" : `Score ${stats.pendingScore} Missing`}</span>
+                <span className="sm:hidden">{stats.pendingScore}</span>
               </button>
             )}
             <button
               onClick={fetchInterviews}
-              className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--cue-green)] hover:bg-[var(--bg-tertiary)] transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--cue-green)] hover:bg-[var(--bg-tertiary)] transition-colors"
             >
-              <RefreshCw className={`w-5 h-5 ${loading ? "animate-spin text-[var(--cue-green)]" : ""}`} />
+              <RefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${loading ? "animate-spin text-[var(--cue-green)]" : ""}`} />
             </button>
             <button
               onClick={handleLogout}
-              className="px-5 py-2 text-[13px] font-[700] rounded-xl transition-colors border-2"
+              className="px-3 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-[13px] font-[700] rounded-xl transition-colors border-2"
               style={{ borderColor: "var(--border-medium)", color: "var(--text-secondary)" }}
             >
               Logout
@@ -140,7 +141,7 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 py-10 pb-20">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-8 py-6 sm:py-10 pb-20">
 
         {/* Rescore result banner */}
         <AnimatePresence>
@@ -170,11 +171,11 @@ export default function DashboardHome() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
           }}
-          className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 mb-10"
+          className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6 mb-8 sm:mb-10"
         >
           {[
             { label: "Total Completed", val: stats.total, icon: Users, color: "#1A2332" },
-            { label: "Average Score", val: `${stats.avgScore}/5`, icon: BarChart2, color: "#8A2BE2" },
+            { label: "Avg Score", val: `${stats.avgScore}/5`, icon: BarChart2, color: "#8A2BE2" },
             { label: "Strong Hires", val: stats.strongHires, icon: Target, color: "var(--cue-green-dark)" },
             { label: "Hires", val: stats.hires, icon: UserCheck, color: "#0D9488" },
             { label: "Maybe", val: stats.maybe, icon: Star, color: "var(--cue-orange)" },
@@ -183,16 +184,16 @@ export default function DashboardHome() {
             <motion.div
               key={i}
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="bg-white p-6 rounded-[16px] transition-transform hover:-translate-y-1"
+              className="bg-white p-4 sm:p-6 rounded-[16px] transition-transform hover:-translate-y-1"
               style={{ boxShadow: "var(--shadow-md)", border: "1px solid var(--border-light)" }}
             >
-              <div className="flex justify-between items-start mb-4">
-                <div className="text-[32px] font-[800] leading-none" style={{ color: stat.color }}>{stat.val}</div>
-                <div className="p-2 rounded-lg" style={{ background: `${stat.color}15` }}>
-                  <stat.icon className="w-5 h-5" style={{ color: stat.color }} />
+              <div className="flex justify-between items-start mb-2 sm:mb-4">
+                <div className="text-[24px] sm:text-[32px] font-[800] leading-none" style={{ color: stat.color }}>{stat.val}</div>
+                <div className="p-1.5 sm:p-2 rounded-lg" style={{ background: `${stat.color}15` }}>
+                  <stat.icon className="w-4 h-4 sm:w-5 h-5" style={{ color: stat.color }} />
                 </div>
               </div>
-              <p className="text-[13px] font-bold uppercase tracking-wider text-[var(--text-muted)]">{stat.label}</p>
+              <p className="text-[11px] sm:text-[13px] font-bold uppercase tracking-wider text-[var(--text-muted)]">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -210,18 +211,20 @@ export default function DashboardHome() {
         )}
 
         {/* FILTER + SEARCH ROW */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-          <div className="flex bg-white rounded-full p-1" style={{ boxShadow: "var(--shadow-sm)", border: "1px solid var(--border-light)" }}>
-            {["All", "Strong Hire", "Hire", "Maybe", "Reject", "Pending"].map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className="px-4 py-2 rounded-full text-[13px] font-[700] transition-colors"
-                style={filter === f ? { background: "var(--gradient-green)", color: "white" } : { color: "var(--text-secondary)" }}
-              >
-                {f === "Pending" ? `Pending (${stats.pendingScore})` : f}
-              </button>
-            ))}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 mb-8">
+          <div className="w-full md:w-auto overflow-hidden">
+            <div className="flex bg-white rounded-full p-1 overflow-x-auto scrollbar-hide no-scrollbar" style={{ boxShadow: "var(--shadow-sm)", border: "1px solid var(--border-light)" }}>
+              {["All", "Strong Hire", "Hire", "Maybe", "Reject", "Pending"].map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className="px-4 py-2 rounded-full text-[13px] font-[700] transition-colors whitespace-nowrap"
+                  style={filter === f ? { background: "var(--gradient-green)", color: "white" } : { color: "var(--text-secondary)" }}
+                >
+                  {f === "Pending" ? `Pending (${stats.pendingScore})` : f}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="relative w-full md:w-[320px]">
@@ -237,7 +240,7 @@ export default function DashboardHome() {
           </div>
         </div>
 
-        {/* TABLE */}
+        {/* TABLE WRAPPER */}
         <div className="bg-white rounded-[20px] overflow-hidden" style={{ boxShadow: "var(--shadow-md)", border: "1px solid var(--border-light)" }}>
           {loading && interviews.length === 0 ? (
             <div className="flex items-center justify-center p-20">
@@ -254,92 +257,149 @@ export default function DashboardHome() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr style={{ background: "var(--bg-secondary)" }}>
-                    <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Candidate</th>
-                    <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Date</th>
-                    <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Overall Score</th>
-                    <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Verdict</th>
-                    <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y" style={{ borderColor: "var(--border-light)" }}>
-                  {filteredInterviews.map((interview) => (
-                    <tr key={interview.id} className="hover:bg-[var(--bg-tertiary)] transition-colors group">
-                      <td className="px-8 py-5">
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-sm" style={{ background: "var(--gradient-green)" }}>
-                            {interview.candidates?.name?.charAt(0)?.toUpperCase() || "?"}
-                          </div>
-                          <div>
-                            <div className="font-[700] text-[var(--text-primary)] mb-0.5">
-                              {interview.candidates?.name || "Unknown Candidate"}
-                            </div>
-                            <div className="text-[13px] font-[500] text-[var(--text-muted)]">
-                              {interview.candidates?.email || "—"}
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-8 py-5">
-                        {interview.completed_at ? (
-                          <>
-                            <div className="text-[14px] font-[600] text-[var(--text-primary)] mb-0.5">
-                              {new Date(interview.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                            </div>
-                            <div className="text-[13px] font-[500] text-[var(--text-muted)]">
-                              {new Date(interview.completed_at).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
-                            </div>
-                          </>
-                        ) : (
-                          <span className="text-[13px] text-[var(--text-muted)]">—</span>
-                        )}
-                      </td>
-                      <td className="px-8 py-5">
-                        {interview.scores ? (
-                          <div className="flex items-center gap-2">
-                            <span className="text-[18px] font-[800] text-[var(--text-primary)]">
-                              {interview.scores.overall_score?.toFixed(1) || "—"}
-                            </span>
-                            <span className="text-[13px] text-[var(--text-muted)] font-medium">/ 5.0</span>
-                          </div>
-                        ) : (
-                          <span className="text-[13px] text-[var(--text-muted)] italic">Not scored yet</span>
-                        )}
-                      </td>
-                      <td className="px-8 py-5">
-                        {interview.scores?.recommendation ? (
-                          <div
-                            className="inline-flex px-3 py-1 rounded-full text-[12px] font-[800] uppercase tracking-wide shadow-sm"
-                            style={getBadgeStyle(interview.scores.recommendation)}
-                          >
-                            {interview.scores.recommendation}
-                          </div>
-                        ) : (
-                          <div
-                            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-[700] uppercase tracking-wide"
-                            style={{ background: "rgba(225,112,85,0.1)", color: "var(--cue-orange)" }}
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse inline-block" />
-                            Pending
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-8 py-5 text-right">
-                        <Link
-                          href={`/dashboard/home/${interview.id}`}
-                          className="inline-flex px-5 py-2 rounded-xl text-[13px] font-[700] transition-colors bg-white border border-[var(--border-medium)] text-[var(--text-primary)] group-hover:border-[var(--cue-green)] group-hover:text-[var(--cue-green)] shadow-sm"
-                        >
-                          View Report →
-                        </Link>
-                      </td>
+            <>
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr style={{ background: "var(--bg-secondary)" }}>
+                      <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Candidate</th>
+                      <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Date</th>
+                      <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Overall Score</th>
+                      <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Verdict</th>
+                      <th className="px-8 py-5 text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider text-right">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y" style={{ borderColor: "var(--border-light)" }}>
+                    {filteredInterviews.map((interview) => (
+                      <tr key={interview.id} className="hover:bg-[var(--bg-tertiary)] transition-colors group">
+                        <td className="px-8 py-5">
+                          <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-sm" style={{ background: "var(--gradient-green)" }}>
+                              {interview.candidates?.name?.charAt(0)?.toUpperCase() || "?"}
+                            </div>
+                            <div>
+                              <div className="font-[700] text-[var(--text-primary)] mb-0.5">
+                                {interview.candidates?.name || "Unknown Candidate"}
+                              </div>
+                              <div className="text-[13px] font-[500] text-[var(--text-muted)]">
+                                {interview.candidates?.email || "—"}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-8 py-5">
+                          {interview.completed_at ? (
+                            <>
+                              <div className="text-[14px] font-[600] text-[var(--text-primary)] mb-0.5">
+                                {new Date(interview.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                              </div>
+                              <div className="text-[13px] font-[500] text-[var(--text-muted)]">
+                                {new Date(interview.completed_at).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+                              </div>
+                            </>
+                          ) : (
+                            <span className="text-[13px] text-[var(--text-muted)]">—</span>
+                          )}
+                        </td>
+                        <td className="px-8 py-5">
+                          {interview.scores ? (
+                            <div className="flex items-center gap-2">
+                              <span className="text-[18px] font-[800] text-[var(--text-primary)]">
+                                {interview.scores.overall_score?.toFixed(1) || "—"}
+                              </span>
+                              <span className="text-[13px] text-[var(--text-muted)] font-medium">/ 5.0</span>
+                            </div>
+                          ) : (
+                            <span className="text-[13px] text-[var(--text-muted)] italic">Not scored yet</span>
+                          )}
+                        </td>
+                        <td className="px-8 py-5">
+                          {interview.scores?.recommendation ? (
+                            <div
+                              className="inline-flex px-3 py-1 rounded-full text-[12px] font-[800] uppercase tracking-wide shadow-sm"
+                              style={getBadgeStyle(interview.scores.recommendation)}
+                            >
+                              {interview.scores.recommendation}
+                            </div>
+                          ) : (
+                            <div
+                              className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-[700] uppercase tracking-wide"
+                              style={{ background: "rgba(225,112,85,0.1)", color: "var(--cue-orange)" }}
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse inline-block" />
+                              Pending
+                            </div>
+                          )}
+                        </td>
+                        <td className="px-8 py-5 text-right">
+                          <Link
+                            href={`/dashboard/home/${interview.id}`}
+                            className="inline-flex px-5 py-2 rounded-xl text-[13px] font-[700] transition-colors bg-white border border-[var(--border-medium)] text-[var(--text-primary)] group-hover:border-[var(--cue-green)] group-hover:text-[var(--cue-green)] shadow-sm"
+                          >
+                            View Report →
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Card View */}
+              <div className="md:hidden divide-y divide-[var(--border-light)]">
+                {filteredInterviews.map((interview) => (
+                  <div key={interview.id} className="p-4 bg-white hover:bg-[var(--bg-tertiary)] transition-colors">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-sm shrink-0" style={{ background: "var(--gradient-green)" }}>
+                        {interview.candidates?.name?.charAt(0)?.toUpperCase() || "?"}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-[700] text-[15px] text-[var(--text-primary)] truncate">
+                          {interview.candidates?.name || "Unknown"}
+                        </div>
+                        <div className="text-[12px] text-[var(--text-muted)] truncate">
+                          {interview.candidates?.email || "—"}
+                        </div>
+                      </div>
+                      {interview.scores?.recommendation ? (
+                        <div className="px-2 py-0.5 rounded-full text-[9px] font-[800] uppercase tracking-wide shrink-0" style={getBadgeStyle(interview.scores.recommendation)}>
+                          {interview.scores.recommendation}
+                        </div>
+                      ) : (
+                        <div className="px-2 py-0.5 rounded-full text-[9px] font-[700] uppercase tracking-wide bg-orange-50 text-orange-600 shrink-0 border border-orange-100">
+                          Pending
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center justify-between mt-1">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-wider">Date</span>
+                        <span className="text-[13px] font-[600] text-[var(--text-primary)]">
+                          {interview.completed_at ? new Date(interview.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—"}
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-wider">Score</span>
+                        <div className="flex items-center gap-1 bg-[var(--bg-secondary)] px-2 py-0.5 rounded-lg border border-[var(--border-light)]">
+                          <span className="text-[14px] font-[800] text-[var(--text-primary)]">
+                            {interview.scores?.overall_score?.toFixed(1) || "—"}
+                          </span>
+                          <span className="text-[10px] text-[var(--text-muted)] font-bold">/ 5.0</span>
+                        </div>
+                      </div>
+                      <Link 
+                        href={`/dashboard/home/${interview.id}`}
+                        className="px-4 py-2 rounded-xl text-[12px] font-[800] bg-white border border-[var(--border-medium)] text-[var(--cue-green-dark)] shadow-sm active:bg-[var(--cue-green-light)]"
+                      >
+                        View Report →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </div>

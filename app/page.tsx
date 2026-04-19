@@ -8,14 +8,14 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen text-[#1A2332] bg-white">
       {/* Nav (Premium Solid Header) */}
-      <header className="w-full bg-white relative z-50" style={{ 
+      <header className="w-full bg-white relative z-50" style={{
         boxShadow: '0 10px 30px -10px rgba(0,0,0,0.05)',
         borderBottom: '1px solid rgba(0,184,148,0.1)'
       }}>
         {/* Premium purely decorative top accent line */}
         <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'var(--gradient-green)' }} />
-        
-        <nav className="flex items-center justify-between px-10 py-[18px] max-w-7xl mx-auto">
+
+        <nav className="flex items-center justify-between px-6 sm:px-10 py-4 sm:py-[18px] max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-sm"
@@ -25,12 +25,12 @@ export default function LandingPage() {
             </div>
             <span className="font-extrabold text-[#1A2332] text-xl tracking-tight" style={{ color: 'var(--cue-green-dark)' }}>Cuemath</span>
             <span className="text-[#8A9BB0] font-light hidden sm:inline mx-1">|</span>
-            <span className="text-[#8A9BB0] font-medium hidden sm:inline text-sm">Tutor Assessment</span>
+            <span className="text-[#8A9BB0] font-medium hidden md:inline text-sm">Tutor Assessment</span>
           </div>
           <div>
             <Link
               href="/dashboard"
-              className="text-[14px] font-[600] px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-[1px]"
+              className="text-[13px] sm:text-[14px] font-[600] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-[1px]"
               style={{
                 background: 'rgba(0,184,148,0.06)',
                 color: 'var(--cue-green-dark)',
@@ -47,18 +47,16 @@ export default function LandingPage() {
       <div className="relative w-full overflow-hidden bg-white min-h-[100vh] flex flex-col justify-end">
         {/* Background Image */}
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
+          className="absolute inset-0 z-0 pointer-events-none bg-cover bg-[position:55%_15%] md:bg-[position:67%_15%]"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1758685848142-06e158cf64bc?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'top center',
+            backgroundImage: `url('https://images.unsplash.com/photo-1758685848142-06e158cf64bc?q=80&w=1332&auto=format&fit=crop')`,
           }}
         />
         {/* Overlay — Frosted bottom to make text highly readable */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.95) 75%, rgba(255,255,255,1) 100%)',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.9) 65%, rgba(255,255,255,1) 100%)',
           }}
         />
         {/* Bottom fade overlap for smooth transition to sections */}
@@ -70,13 +68,13 @@ export default function LandingPage() {
         />
 
         {/* Hero Content */}
-        <section className="relative z-10 flex flex-col items-center text-center px-6 pt-[78vh] pb-16 w-full max-w-[800px] mx-auto mt-auto">
+        <section className="relative z-10 flex flex-col items-center text-center px-6 pt-[52vh] sm:pt-[78vh] pb-10 sm:pb-16 w-full max-w-[800px] mx-auto mt-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[13px] font-bold mb-10"
+            className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[12px] sm:text-[13px] font-bold mb-6 sm:mb-10"
             style={{
               background: "var(--cue-green-light)",
               border: "1px solid rgba(0, 184, 148, 0.2)",
@@ -91,10 +89,11 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[clamp(36px,5.5vw,64px)] font-[800] leading-[1.1] tracking-[-0.03em] text-[var(--text-primary)] mb-6"
+            className="text-[clamp(32px,8vw,64px)] font-[800] leading-[1.1] tracking-[-0.03em] text-[var(--text-primary)] mb-6 px-4"
+            style={{ textShadow: '0 4px 20px rgba(255,255,255,0.6)' }}
           >
             Begin Your Journey<br />
-            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-green)' }}>
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-green)', WebkitTextStroke: '0.1px rgba(255,255,255,0.2)' }}>
               as a Cuemath Tutor
             </span>
           </motion.h1>
@@ -104,7 +103,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[17px] text-[var(--text-secondary)] font-[500] max-w-[500px] leading-[1.6] mb-10"
+            className="text-[15px] sm:text-[17px] text-[var(--text-secondary)] font-[500] max-w-[500px] leading-[1.6] mb-8 sm:mb-10 px-4"
           >
             Complete a short structured interview from the comfort of your home. Our team reviews your responses within 48 hours.
           </motion.p>
@@ -118,7 +117,7 @@ export default function LandingPage() {
           >
             <Link
               href="/interview"
-              className="flex items-center justify-center gap-2 px-12 py-[18px] w-full sm:w-auto rounded-full font-[700] text-white text-[18px] transition-all duration-300 hover:-translate-y-[2px]"
+              className="flex items-center justify-center gap-2 px-10 sm:px-12 py-4 sm:py-[18px] w-[90%] sm:w-auto rounded-full font-[700] text-white text-[16px] sm:text-[18px] transition-all duration-300 hover:-translate-y-[2px]"
               style={{
                 background: 'var(--gradient-orange)',
                 boxShadow: '0 8px 32px rgba(225,112,85,0.35)'
@@ -155,7 +154,7 @@ export default function LandingPage() {
 
         <div className="relative z-10 pt-12 pb-12">
           {/* Floating Stats Row */}
-          <section className="max-w-5xl mx-auto px-6 pb-24 h-auto">
+          <section className="max-w-5xl mx-auto px-6 pb-16 sm:pb-24 h-auto">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -196,7 +195,7 @@ export default function LandingPage() {
           </section>
 
           {/* How it works */}
-          <section className="py-24 px-6 rounded-3xl mx-6 sm:mx-12 overflow-hidden relative shadow-sm border border-black/5" style={{ background: 'rgba(248, 250, 252, 0.7)' }}>
+          <section className="py-16 sm:py-24 px-6 rounded-3xl mx-4 sm:mx-12 overflow-hidden relative shadow-sm border border-black/5" style={{ background: 'rgba(248, 250, 252, 0.7)' }}>
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
