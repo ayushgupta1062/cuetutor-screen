@@ -35,7 +35,8 @@ Every interview session is recorded and stored securely. Recruiters can:
 - Verify the AI's "Fluency" and "Clarity" scores with original audio.
 - Ensure pedagogical quality through manual review.
 
-![Candidate Scorecard](./public/screenshots/candidate_scorecard.png)
+![Candidate Scorecard](.<img width="1902" height="904" alt="image" src="https://github.com/user-attachments/assets/a05c9474-d415-455f-ae2c-5aa43314c132" />
+.png)
 
 ---
 
