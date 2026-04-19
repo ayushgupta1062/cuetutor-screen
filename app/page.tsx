@@ -50,25 +50,33 @@ export default function LandingPage() {
           className="absolute inset-0 z-0 pointer-events-none bg-cover bg-[position:55%_15%] md:bg-[position:67%_15%]"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1758685848142-06e158cf64bc?q=80&w=1332&auto=format&fit=crop')`,
+            filter: 'contrast(1.05)',
           }}
         />
-        {/* Overlay — Frosted bottom to make text highly readable */}
+        {/* FACE ONLY HIGHLIGHT (Radial Spotlight) */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.9) 65%, rgba(255,255,255,1) 100%)',
+            background: 'radial-gradient(circle at 60% 25%, transparent 10%, rgba(0,0,0,0.3) 60%)',
           }}
         />
-        {/* Bottom fade overlap for smooth transition to sections */}
+        {/* CRISP WHITE BOTTOM */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-[100px] z-[2] pointer-events-none"
+          className="absolute inset-0 z-[2] pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,1))'
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.9) 65%, rgba(255,255,255,1) 100%)',
+          }}
+        />
+        {/* Bottom fade overlap for smooth transition */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[100px] z-[3] pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, transparent, #fff)'
           }}
         />
 
         {/* Hero Content */}
-        <section className="relative z-10 flex flex-col items-center text-center px-6 pt-[52vh] sm:pt-[78vh] pb-10 sm:pb-16 w-full max-w-[800px] mx-auto mt-auto">
+        <section className="relative z-10 flex flex-col items-center text-center px-6 pt-[70vh] sm:pt-[78vh] pb-10 sm:pb-16 w-full max-w-[800px] mx-auto mt-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
