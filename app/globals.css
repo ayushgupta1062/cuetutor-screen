@@ -1,27 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cuemath Brand Colors */
+  --cue-green: #00B894;
+  --cue-green-dark: #00897B;
+  --cue-green-light: #E8F8F5;
+  --cue-orange: #E17055;
+  --cue-orange-light: #FFF3F0;
+  
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FFFE;
+  --bg-tertiary: #F0FAF8;
+  --bg-card: #FFFFFF;
+  
+  /* Text */
+  --text-primary: #1A2332;
+  --text-secondary: #4A5568;
+  --text-muted: #8A9BB0;
+  
+  /* Borders */
+  --border-light: #E8F4F2;
+  --border-medium: #C8E6E0;
+  
+  /* Shadows - 3D depth effect */
+  --shadow-sm: 0 2px 8px rgba(0, 184, 148, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 184, 148, 0.12);
+  --shadow-lg: 0 20px 60px rgba(0, 184, 148, 0.15);
+  --shadow-float: 0 32px 80px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 184, 148, 0.1);
+  
+  /* Gradients */
+  --gradient-hero: radial-gradient(ellipse at 70% 50%, rgba(0,184,148,0.12) 0%, rgba(225,112,85,0.06) 50%, transparent 70%);
+  --gradient-card: linear-gradient(135deg, #FFFFFF 0%, #F8FFFE 100%);
+  --gradient-green: linear-gradient(135deg, #00B894 0%, #00CEC9 100%);
+  --gradient-orange: linear-gradient(135deg, #E17055 0%, #FDCB6E 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cue-green);
+}
+
+/* Focus states */
+input:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 2px solid var(--cue-green);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes mic-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225,112,85,0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(225,112,85,0); }
+}
+
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 24px; }
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+}
+
+/* Print styles for PDF download */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body, .print-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
   }
 }
