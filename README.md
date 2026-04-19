@@ -26,7 +26,8 @@ Recruiters can manage candidates through a feature-rich HR Dashboard:
 - **Instant Verdicts**: Quick determination of "Strong Hire", "Hire", "Maybe", or "Reject".
 - **Transcript Analysis**: View exact quotes from candidates that justify their scores.
 
-![HR Dashboard](./public/screenshots/hr_dashboard.png)
+![HR Dashboard](<img width="1912" height="916" alt="image" src="https://github.com/user-attachments/assets/e64a77e6-6ed4-48d4-909a-369329a5a3d1" />
+.png)
 
 ### 4. **Audio Playback for HR**
 Every interview session is recorded and stored securely. Recruiters can:
